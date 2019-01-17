@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        img{
+            width: 100%;
+            height:100% ;
+        }
+        .option{
+                float: left;
+                    }
+        .option  ul li{
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            border: 1px solid;
+            background: orangered;
+            color:#fff;
+            line-height: 50px;
+        }
+        .option  ul li.active{
+           background: #ccc;
+            border: 1px solid  black;
+        }
+        .til{
+            float: left;
+            height:260px;
+            width: 300px;
+            border:1px solid black ;
+        }
+        .til ul{
+            width: 100%;
+            height:100%;
+            overflow: hidden;
+        }
+        .til ul li{
+            width: 100%;
+            height:100%;
+            display:none;
+        }
+        .til ul li.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="option">
+    <ul>
+        <li class="active">上路</li>
+        <li>中路</li>
+        <li>下路</li>
+        <li>辅助</li>
+        <li>打野</li>
+    </ul>
+</div>
+<div class="til">
+    <ul>
+        <li class="active"><img src="https://img03.sogoucdn.com/app/a/100520093/ca86e620b9e623ff-e7ae36db714776c0-7403254d77ae828c79a3c827a953b714.jpg" alt=""></li>
+        <li><img src="https://i01piccdn.sogoucdn.com/eb9525f2018a46b3" alt=""></li>
+        <li><img src="https://i02picsos.sogoucdn.com/ff63c0a760961f80" alt=""></li>
+        <li><img src="https://i04piccdn.sogoucdn.com/1e9d2d5f558be8eb" alt=""></li>
+        <li><img src="https://i04piccdn.sogoucdn.com/6d399ac7eda1a6ba" alt=""></li>
+    </ul>
+</div>
+</body>
+</html>
+
+<script>
+    var optDiv = document.getElementsByClassName('option')[0];
+    var optDivUl = optDiv.getElementsByTagName('ul')[0];
+    var opts = optDivUl .getElementsByTagName('li');
+
+    var tilDiv = document.getElementsByClassName('til')[0];
+    var tilDivUl = tilDiv.getElementsByTagName('ul')[0];
+    var tils= tilDivUl.getElementsByTagName('li');
+    console.log(opts, tils);
+    function clearClass() {
+        for (var i = 0; i < opts.length; i++) {
+           opts[i].className='';
+           tils[i].className='';
+
+        }
+    }
+    for (var i = 0; i < opts.length; i++) {
+        opts[i].myIndex=i;
+        opts[i].onclick =function () {
+            clearClass();
+            opts[this.myIndex].className='active';
+            tils[this.myIndex].className='active';
+        }
+    }
+</script>
